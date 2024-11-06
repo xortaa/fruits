@@ -1,0 +1,75 @@
+step 1: 
+
+composer create-project laravel/laravel example-app
+* add database in the phpMyAdmin and then change the database name in the env
+php artisan serve
+
+
+// in htdocs
+
+step 2: 
+
+php artisan make:migration create_flights_table
+	example
+ Schema::create('fruits', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('name');
+            $table->string('color');
+        });
+
+php artisan migrate (to add the table to database)
+
+step 3: 
+
+php artisan make:model flight
+
+// type in 
+
+protected $fillable = [
+'name',
+'qty'
+]
+
+step 4: 
+
+in the views add the controller 
+
+php artisan make:controller FruitsController
+
+go to /resources/views
+
+add /fruits/index.blade.php
+
+						name of the function
+Route::get('/product', [ProductController::class, 'index'])->name('product.index')
+
+make the controller function and the create function along with the post
+
+ex of post function
+
+public function store(Request $request) {
+	$data = $request->validate([
+		'name' => 'required',
+		'qty' => 'required|number',
+		'description' => 'nullable'
+		])
+
+	$newProduct = Product::create($data);
+
+return redirect(route('product.index');
+}
+
+
+step 5: 
+
+make the forms 
+
+
+
+
+
+
+
+
+
